@@ -94,10 +94,10 @@
     AVURLAsset *asset=[[AVURLAsset alloc] initWithURL:url options:nil];
     AVAssetImageGenerator *imgGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
     
-    imgGenerator.appliesPreferredTrackTransform = TRUE;
+    imgGenerator.appliesPreferredTrackTransform = YES;
     imgGenerator.maximumSize = CGSizeMake((CGFloat)maxw, (CGFloat)maxh);
     imgGenerator.requestedTimeToleranceBefore = kCMTimeZero;
-    imgGenerator.requestedTimeToleranceAfter = kCMTimeZero;
+    imgGenerator.requestedTimeToleranceAfter = CMTimeMake(100, 1000);
     
     NSError *error = nil;
     CGImageRef cgImage = [imgGenerator copyCGImageAtTime:CMTimeMake(timeMs, 1000) actualTime:nil error:&error];
